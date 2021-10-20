@@ -1,14 +1,27 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+const mapStateToProps = (state) => ({})
 
-export default function Job({ data }) {
+const mapDispatchToProps = (dispatch) => ({
+  addToFavorite: (company) =>{
+    dispatch({
+      type: 'ADD_COMPANY_TO_FAVORITE',
+      payload: company
+    })
+  }
+})
+
+const Job =  ({ data, addToFavorite}) => {
   return (
     <Row
       className="mx-0 mt-3 p-3"
-      style={{ border: "1px solid #00000033", borderRadius: 4 }}
+      style={{ border: "2px solid #00000033", borderRadius: 4 }}
     >
       <Col xs={3}>
+      <Button  variant="outline-dark" onClick={() => addToFavorite(data)}>add</Button>
+        
         <Link to={`/${data.company_name}`}>{data.company_name}</Link>
       </Col>
       <Col xs={9}>
@@ -19,3 +32,4 @@ export default function Job({ data }) {
     </Row>
   );
 }
+export default connect(mapStateToProps,mapDispatchToProps)(Job)

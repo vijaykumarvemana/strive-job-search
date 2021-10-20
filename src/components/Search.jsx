@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap'
+import { Container, Row, Col, Form,Button } from 'react-bootstrap'
 import Job from './Job'
 import uniqid from 'uniqid'
 
@@ -44,7 +44,9 @@ export default class MainSearch extends React.Component {
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Control type="search" value={this.state.query} onChange={this.handleChange} placeholder="type and press Enter" />
                         </Form>
+                        
                     </Col>
+                    <Button onClick={()=>this.history.push('/favorite')}>FAVORITES</Button>
                     <Col xs={10} className='mx-auto mb-5'>
                         {
                             this.state.jobs.map(jobData => <Job key={uniqid()} data={jobData} />)
