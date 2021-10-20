@@ -1,13 +1,44 @@
-import { Button, Col, Row} from "react-bootstrap"
+import { Button, Col, Container, Row} from "react-bootstrap"
+import { connect } from "react-redux"
 
 
-const Favorite = () => {
+
+const mapStateToProps = (state) =>({
+    companies: state.favorite.companies
+})
+const mapDispatchToProps = (dispatch) => ({
+    removieFromFavorite: (index) =>{
+        dispatch({
+            type: 'REMOVE_COMPANY_FROM_FAVORITE',
+            payload: index
+        })
+    }
+})
+
+
+const Favorite = ({companies, removieFromFavorite}) => {
     return(
-     <Row>
-         <Col
+     <Container>
+         <Row>
+             <Col>
+             {
+                 companies.map((company,i) =>
+               <div  key={i} style={{ border: "2px solid #00000033", borderRadius: 4 , marginBottom:"10px", marginTop:"30px"}}>{company.company_name}
+               <Button onClick={() =>removieFromFavorite(i)}>REMOVE</Button>
+               </div>
+                
+             
+                    )
+             }
+             
+             </Col>
+         </Row>
 
-     </Row>
+     </Container>
+         
+
+    
 
     )
 }
-export default Favorite
+export default connect(mapStateToProps, mapDispatchToProps)(Favorite)

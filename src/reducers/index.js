@@ -14,6 +14,15 @@ const reducer = (state=initialState, action) => {
                 }
             }
         }
+        case 'REMOVE_COMPANY_FROM_FAVORITE':{
+            return {
+                ...state,
+                favorite:{
+                    ...state.favorite,
+                    companies:[...state.favorite.companies.slice(0, action.payload),...state.favorite.companies.slice(action.payload + 1)]
+                }
+            }
+        }
         default:
             return state
     }

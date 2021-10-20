@@ -46,7 +46,7 @@ export default class MainSearch extends React.Component {
                         </Form>
                         
                     </Col>
-                    <Button onClick={()=>this.history.push('/favorite')}>FAVORITES</Button>
+                    <Button onClick={()=>this.props.history.push('/favorite')}>FAVORITES</Button>
                     <Col xs={10} className='mx-auto mb-5'>
                         {
                             this.state.jobs.map(jobData => <Job key={uniqid()} data={jobData} />)
