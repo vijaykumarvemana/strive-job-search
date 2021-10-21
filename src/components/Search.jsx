@@ -38,7 +38,7 @@ export default class MainSearch extends React.Component {
             <Container>
                 <Row>
                     <Col xs={10} className='mx-auto my-3'>
-                        <h1>Remote Jobs Search</h1>
+                        <h1> Jobs Search Engine</h1>
                     </Col>
                     <Col xs={10} className='mx-auto'>
                         <Form onSubmit={this.handleSubmit}>

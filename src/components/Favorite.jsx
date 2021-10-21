@@ -23,8 +23,9 @@ const Favorite = ({companies, removieFromFavorite}) => {
              <Col>
              {
                  companies.map((company,i) =>
+                 
                <div  key={i} style={{ border: "2px solid #00000033", borderRadius: 4 , marginBottom:"10px", marginTop:"30px"}}>{company.company_name}
-               <Button onClick={() =>removieFromFavorite(i)}>REMOVE</Button>
+               <Button onClick={() =>removieFromFavorite(i)}>remove</Button>
                </div>
                 
              
